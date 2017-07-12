@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+<style type="text/css">
+    .container.main{
+    margin-top: 7.0em;
+}
+</style>
+
+
+    <div class="ui main text container segment">
+        <div class="ui huge header">Create A New Blog</div>
+        <form class="ui form" action="/blog" method="POST">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="john[name]" placeholder="title"></input>
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" name="john[image]" placeholder="image"></input>
+            </div>
+            <div class="field">
+                <label>Body</label>
+                <textarea name="john[body]"></textarea>
+            </div>
+            <input class="ui teal basic button" type="submit">
+        </form>
+    </div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+
+<div class="ui main text container">
+   	<div class="ui huge header">Flipponachi Blog Site</div>
+    <div class="ui top attached segment">
+<div class="ui divided items">
+	<% john.forEach(function(john){ %>
+	 <div class="item">
+	    <div class="image">
+	      <img src="<%= john.image %>">
+	    </div>
+	    <div class="content">
+	      <h2><%= john.name %></h2>
+	      <div class="meta">
+	        <span class="cinema"><%= john.date.toDateString() %></span>
+	      </div>
+	      <div class="description">
+	        <p><%= john.body.substring(0, 100); %></p>
+	      </div>
+	      <div class="extra">
+	        <a href="/blog/<%=john._id %>" class="ui floated basic violet button">
+	          Read More
+	          <i class="right chevron icon"></i>
+	        </a>
+	      </div>
+	    </div>
+	  </div>
+	<% }); %>
+</div>
+</div>
+    
+  </div>
+
+
+<% include ./partials/footer %>
+
