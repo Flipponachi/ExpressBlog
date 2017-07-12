@@ -108,7 +108,7 @@ app.delete("/blog/:id", function(req, res){
             res.redirect("/blog")
         }
     })
-})
+});
 //==========END OF DELETE ROUTE PAGE========
 
 app.listen(process.env.PORT, process.env.IP, function(){
