@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 //mongoose.connect("mongodb://localhost/john_app");
-mongoose.connect("mongodb://dayo:coding3080@ds155192.mlab.com:55192/dogblog");
+mongoose.connect("mongodb://dayo:123456789@ds155192.mlab.com:55192/dogblog");
 var johnSchema = new mongoose.Schema({
     name: String,
     image: String,
