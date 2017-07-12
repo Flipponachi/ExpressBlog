@@ -3,7 +3,8 @@ var app = express();
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-mongoose.connect("mongodb://localhost/john_app");
+//mongoose.connect("mongodb://localhost/john_app");
+mongoose.connect("mongodb://dayo:coding3080@ds155192.mlab.com:55192/dogblog");
 var johnSchema = new mongoose.Schema({
     name: String,
     image: String,
@@ -12,7 +13,7 @@ var johnSchema = new mongoose.Schema({
 });
 
 var John = mongoose.model("John", johnSchema);
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
