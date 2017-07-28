@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var expressSanitizer = require("express-sanitizer");
 var methodOverride = require("method-override");
 //mongoose.connect("mongodb://localhost/john_app");
 mongoose.connect("mongodb://dayo:123456789@ds155192.mlab.com:55192/dogblog");
@@ -15,21 +16,10 @@ var johnSchema = new mongoose.Schema({
 var John = mongoose.model("John", johnSchema);
 app.set("view engine", "ejs"); 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
-
-// John.create ({
-//     name: "Monkey",
-//     image: "https://farm3.staticflickr.com/2331/1796010393_492d4d583a.jpg",
-//     body: "Junkyard and stuffs ensure that a monkey created is a dog on rabbid madness"
-// }, function(err,created){
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log("Created in the database")
-//     }
-// });
 
 //====================================ROUTES======================================
 app.get("/", function(req, res){
@@ -54,6 +44,7 @@ app.get("/blog/new", function(req, res){
 });
 
 app.post("/blog", function(req, res){
+    req.body.john.body = req.sanitize(req.body.john.body)
     John.create(req.body.john, function(err, Data){
         if(err){
             res.render("form")
@@ -90,6 +81,7 @@ app.get("/blog/:id/edit", function(req, res) {
 });
 
 app.put("/blog/:id", function(req, res){
+    req.body.john.body = req.sanitize(req.body.john.body)
     John.findByIdAndUpdate(req.params.id, req.body.john, function(err, newBlog){
         if(err){
             console.log(err)
